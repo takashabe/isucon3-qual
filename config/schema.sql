@@ -7,6 +7,9 @@ CREATE TABLE `memos` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
+  KEY a (is_private, created_at, id),
+  KEY b (user, created_at),
+  KEY c (is_private, created_at)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `users`;

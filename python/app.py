@@ -224,7 +224,7 @@ def memo(memo_id):
     memos = []
     older = None
     newer = None
-    cur.execute("SELECT * FROM memos WHERE user=%s " + cond + " ORDER BY created_at", memo["user"])
+    cur.execute("SELECT id FROM memos WHERE user=%s " + cond + " ORDER BY created_at", memo["user"])
     memos = cur.fetchall()
     for i in range(len(memos)):
         if memos[i]["id"] == memo["id"]:
