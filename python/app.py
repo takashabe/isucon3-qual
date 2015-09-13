@@ -109,9 +109,9 @@ def top_page():
 
     cur.execute("SELECT * FROM memos WHERE is_private=0 ORDER BY created_at DESC, id DESC LIMIT 100")
     memos = cur.fetchall()
-    for memo in memos:
-        cur.execute('SELECT username FROM users WHERE id=%s', memo["user"])
-        memo['username'] = cur.fetchone()['username']
+#    for memo in memos:
+#        cur.execute('SELECT username FROM users WHERE id=%s', memo["user"])
+#        memo['username'] = cur.fetchone()['username']
 
     cur.close()
 
@@ -136,9 +136,9 @@ def recent(page):
     if len(memos) == 0:
         abort(404)
 
-    for memo in memos:
-        cur.execute('SELECT username FROM users WHERE id=%s', memo["user"])
-        memo['username'] = cur.fetchone()['username']
+#    for memo in memos:
+#        cur.execute('SELECT username FROM users WHERE id=%s', memo["user"])
+#        memo['username'] = cur.fetchone()['username']
 
     cur.close()
 
