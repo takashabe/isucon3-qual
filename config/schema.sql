@@ -6,10 +6,10 @@ CREATE TABLE `memos` (
   `is_private` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-  INDEX a (is_private, created_at, id),
-  INDEX b (user, created_at),
-  INDEX c (is_private, created_at)
+  PRIMARY KEY (`id`),
+  INDEX a(is_private, created_at, id),
+  INDEX b(user, created_at),
+  INDEX c(is_private, created_at)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `users`;
