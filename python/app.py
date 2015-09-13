@@ -80,6 +80,10 @@ def gen_markdown(md):
     temp.close()
     return html
 
+def convert_markdown(md):
+    import cMarkdown
+    return cMarkdown.markdown(md)
+
 def get_db():
     top = _app_ctx_stack.top
     if not hasattr(top, 'db'):
@@ -216,7 +220,8 @@ def memo(memo_id):
 
     cur.execute('SELECT username FROM users WHERE id=%s', memo["user"])
     memo["username"] = cur.fetchone()["username"]
-    memo["content_html"] = gen_markdown(memo["content"])
+    # memo["content_html"] = gen_markdown(memo["content"])
+    memo["content_html"] = convert_markdown(memo["content"])
     if user and user["id"] == memo["user"]:
         cond = ""
     else:
