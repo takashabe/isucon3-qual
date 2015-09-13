@@ -81,8 +81,9 @@ def gen_markdown(md):
     return html
 
 def convert_markdown(md):
-    import cMarkdown
-    return cMarkdown.markdown(md)
+    from markdown2 import Markdown
+    markdowner = Markdown()
+    return markdowner.convert(md)
 
 def get_db():
     top = _app_ctx_stack.top
