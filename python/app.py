@@ -104,7 +104,7 @@ def top_page():
     user = get_user()
 
     cur = get_db().cursor()
-    cur.execute('SELECT count(*) AS c FROM memos WHERE is_private=0')
+    cur.execute('SELECT count(id) AS c FROM memos WHERE is_private=0')
     total = cur.fetchone()['c']
 
     cur.execute("SELECT * FROM memos WHERE is_private=0 ORDER BY created_at DESC, id DESC LIMIT 100")
@@ -257,8 +257,9 @@ def memo_post():
     db  = get_db()
     cur = db.cursor()
     cur.execute(
-        "INSERT INTO memos (user, content, is_private, created_at) VALUES (%s, %s, %s, now())",
+        "INSERT INTO memos (user, username, content, is_private, created_at) VALUES (%s, %s, %s, %s, now())",
         ( user["id"],
+          user["username"],
           request.form["content"],
           int(request.form.get("is_private") or 0)
         )
